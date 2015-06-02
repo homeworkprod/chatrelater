@@ -20,8 +20,8 @@ from tempfile import mktemp
 
 from py.test import raises
 
-from analyze import (parse_logfile, relate_nicknames, compress_relations,
-    save_data, load_data)
+from chatrelater.analyze import (parse_logfile, relate_nicknames,
+    compress_relations, save_data, load_data)
 
 
 def test_parse_logfile():
