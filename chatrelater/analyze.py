@@ -20,7 +20,6 @@ nicknames with matching case are recognized.
 """
 
 from __future__ import with_statement
-from contextlib import closing
 from optparse import OptionParser
 from sys import stdout
 
