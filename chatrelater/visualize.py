@@ -49,6 +49,7 @@ def generate_dot(nicknames, relations, directed=False):
 
     return dot
 
+
 def write_file(dot, name, prog, format):
     """Create a graphics file from the DOT data."""
     filename = '%s_%s.%s' % (name, prog, format)

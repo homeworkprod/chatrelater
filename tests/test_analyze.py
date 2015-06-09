@@ -38,6 +38,7 @@ def test_parse_logfile():
         ('Mary', 'foobar')]
     assert parse_logfile(lines) == (expected_nicknames, expected_loglines)
 
+
 def test_relate_nicknames():
     nicknames = set(['John', 'Jane', 'Mary'])
     loglines = [
@@ -55,6 +56,7 @@ def test_relate_nicknames():
         ('Jane', 'John')]
     result = list(relate_nicknames(nicknames, loglines))
     assert result == expected_relations
+
 
 def test_compress_relations():
     relations = (

@@ -36,6 +36,7 @@ def iter_files(filenames):
             for line in f:
                 yield line
 
+
 def parse_logfile(lineiter):
     """Return a set of nicknames and a list of (nickname, message) tuples
     extracted from the given lines.
@@ -56,6 +57,7 @@ def parse_logfile(lineiter):
             pass
     return nicknames, loglines
 
+
 def relate_nicknames(nicknames, loglines):
     """Try to figure out relations between users.
 
@@ -65,6 +67,7 @@ def relate_nicknames(nicknames, loglines):
         first = message.split(' ', 1)[0].strip(':,.?!')
         if first in nicknames:
             yield nickname, first
+
 
 def compress_relations(relations, unify=False):
     """Combine one or more equal (nick1, nick2) tuples into a single
@@ -79,6 +82,7 @@ def compress_relations(relations, unify=False):
     for rel in set(relations):
         yield rel[0], rel[1], relations.count(rel)
 
+
 def analyze(filenames, directed=False, no_unrelated_nicknames=False):
     """Parse logfiles and return nicknames and their determined relations."""
     nicknames, loglines = parse_logfile(iter_files(filenames))
@@ -90,8 +94,10 @@ def analyze(filenames, directed=False, no_unrelated_nicknames=False):
             nicknames.update(rel[:2])
     return nicknames, relations
 
+
 # ---------------------------------------------------------------- #
 # serialization
+
 
 def save_data(data, filename=None):
     """Export data to file.
@@ -108,11 +114,13 @@ def save_data(data, filename=None):
     else:
         dump(stdout)
 
+
 def load_data(filename):
     """Import data from file."""
     with open(filename, 'rb') as f:
         d = yaml.safe_load(f)
         return d['nicknames'], d['relations'], d['directed']
+
 
 def main():
     # Create parser.
