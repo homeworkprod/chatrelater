@@ -2,14 +2,17 @@
 
 from setuptools import setup
 
-import chatrelater
+
+def read_readme():
+    with open('README.rst') as f:
+        return f.read()
 
 
 setup(
     name='ChatRelater',
     version='0.1',
     description='Analyze and visualize relations between chat users.',
-    long_description=chatrelater.__doc__,
+    long_description=read_readme(),
     license='MIT',
     author='Jochen Kupperschmidt',
     author_email='homework@nwsnet.de',
