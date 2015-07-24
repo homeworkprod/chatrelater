@@ -34,10 +34,3 @@ the setup script.
 :copyright: 2007 Jochen Kupperschmidt
 :license: MIT, see LICENSE for details.
 """
-
-__author__ = 'Jochen Kupperschmidt <homework at nwsnet dot de>'
-__date__ = '2007-07-05'
-__docformat__ = 'restructuredtext'
-__license__ = 'MIT <http://www.opensource.org/licenses/mit-license.php>'
-__url__ = 'http://homework.nwsnet.de/'
-__version__ = '0.1'

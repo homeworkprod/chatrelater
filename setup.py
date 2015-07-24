@@ -1,32 +1,24 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""
-Chat Relater's setup script
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"""
-
-from setuptools import setup, find_packages
+from setuptools import setup
 
 import chatrelater
 
 
-author, author_email = chatrelater.__author__[:-1].split(' <')
-
-
 setup(
-    name = 'ChatRelater',
-    version = chatrelater.__version__,
-    description = 'Analyze and visualize relations between chat users.',
-    long_description = chatrelater.__doc__,
-    license = chatrelater.__license__,
-    author = author,
-    author_email = author_email,
-    url = chatrelater.__url__,
-    packages = find_packages(),
-    zip_safe = False,
-    include_package_data = True,
-    classifiers = [
+    name='ChatRelater',
+    version='0.1',
+    description='Analyze and visualize relations between chat users.',
+    long_description=chatrelater.__doc__,
+    license='MIT',
+    author='Jochen Kupperschmidt',
+    author_email='homework@nwsnet.de',
+    url='http://homework.nwsnet.de/releases/1856/#chat-relater',
+    packages=['chatrelater'],
+    zip_safe=False,
+    include_package_data=True,
+    classifiers=[
         'Environment :: Console',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
@@ -35,12 +27,12 @@ setup(
         'Topic :: Communications :: Chat',
         'Topic :: Internet :: Log Analysis',
     ],
-    install_requires = [
+    install_requires=[
         'pydot >= 0.9.10',
         'pyparsing >= 1.4.6',
         'PyYAML >= 3.05',
     ],
-    extras_require = {
+    extras_require={
         'test': ['py >= 0.9.0'],
     },
 )
