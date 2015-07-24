@@ -30,12 +30,14 @@ def test_parse_logfile():
         '* some action',
         '<Jane> threefourfive',
         'Someone- A message from someone!',
-        '<Mary> foobar')
+        '<Mary> foobar',
+    )
     expected_nicknames = set(['John', 'Jane', 'Mary'])
     expected_loglines = [
         ('John', 'one two'),
         ('Jane', 'threefourfive'),
-        ('Mary', 'foobar')]
+        ('Mary', 'foobar'),
+    ]
     assert parse_logfile(lines) == (expected_nicknames, expected_loglines)
 
 
@@ -47,32 +49,37 @@ def test_relate_nicknames():
         ('Jane', 'John: I am fine, thanks'),
         ('Mary', 'John?'),
         ('Mary', 'John!'),
-        ('Jane', 'John seems to have disappeared...')]
+        ('Jane', 'John seems to have disappeared...'),
+    ]
     expected_relations = [
         ('John', 'Jane'),
         ('Jane', 'John'),
         ('Mary', 'John'),
         ('Mary', 'John'),
-        ('Jane', 'John')]
+        ('Jane', 'John'),
+    ]
     result = list(relate_nicknames(nicknames, loglines))
     assert result == expected_relations
 
 
 def test_compress_relations():
     relations = (
-        ('one', 'two'),
-        ('one', 'three'),
-        ('two', 'one'),
-        ('one', 'three'),
-        ('three', 'one'))
+        ('one',  'two'  ),
+        ('one',  'three'),
+        ('two',  'one'  ),
+        ('one',  'three'),
+        ('three', 'one' ),
+    )
     expected_compressed = (
-        ('one', 'two', 1),
-        ('one', 'three', 2),
-        ('two', 'one', 1),
-        ('three', 'one', 1))
+        ('one',   'two',   1),
+        ('one',   'three', 2),
+        ('two',   'one',   1),
+        ('three', 'one',   1),
+    )
     expected_compressed_unified = (
-        ('one', 'two', 2),
-        ('one', 'three', 3))
+        ('one',   'two',   2),
+        ('one',   'three', 3),
+    )
     assert set(compress_relations(relations, False)) == set(expected_compressed)
     assert set(compress_relations(relations, True)) == set(expected_compressed_unified)
 
