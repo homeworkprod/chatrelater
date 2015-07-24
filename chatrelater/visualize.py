@@ -15,9 +15,8 @@ needed, which itself require the pyparsing_ library.
 .. _pydot:      http://dkbza.org/pydot.html
 .. _Pyparsing:  http://pyparsing.wikispaces.com/
 
-:date: 2007-07-05
-:copyright: 2007 Jochen Kupperschmidt
-:license: MIT, see LICENSE for details.
+:Copyright: 2007 Jochen Kupperschmidt
+:License: MIT, see LICENSE for details.
 """
 
 from optparse import OptionParser

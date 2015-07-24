@@ -9,9 +9,8 @@ Run with py.test_.
 
 .. _py.test: http://codespeak.net/py/dist/test.html
 
-:date: 2007-07-05
-:copyright: 2007 Jochen Kupperschmidt
-:license: MIT, see LICENSE for details.
+:Copyright: 2007 Jochen Kupperschmidt
+:License: MIT, see LICENSE for details.
 """
 
 import os
