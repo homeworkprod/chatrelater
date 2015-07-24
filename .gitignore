@@ -1,3 +1,11 @@
 # Python bytecode
 *.py[co]
 __pycache__
+
+# virtual environment
+venv
+
+# tox' local data
+.tox
+
+*.egg-info
