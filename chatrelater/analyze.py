@@ -53,6 +53,7 @@ def parse_logfile(lineiter):
             loglines.append((nickname, message))
         except ValueError:
             pass
+
     return nicknames, loglines
 
 
@@ -76,6 +77,7 @@ def compress_relations(relations, unify=False):
     """
     if unify:
         relations = (tuple(sorted(rel)) for rel in relations)
+
     relations = list(relations)
     for rel in set(relations):
         yield rel[0], rel[1], relations.count(rel)
@@ -86,10 +88,12 @@ def analyze(filenames, directed=False, no_unrelated_nicknames=False):
     nicknames, loglines = parse_logfile(iter_files(filenames))
     relations = relate_nicknames(nicknames, loglines)
     relations = list(compress_relations(relations, unify=not directed))
+
     if no_unrelated_nicknames:
         nicknames = set()
         for rel in relations:
             nicknames.update(rel[:2])
+
     return nicknames, relations
 
 
@@ -117,7 +121,8 @@ def load_data(filename):
     """Import data from file."""
     with open(filename, 'rb') as f:
         d = yaml.safe_load(f)
-        return d['nicknames'], d['relations'], d['directed']
+
+    return d['nicknames'], d['relations'], d['directed']
 
 
 def main():
@@ -157,8 +162,11 @@ def main():
             % (len(nicknames), len(relations))
 
     # Store result.
-    data = dict(nicknames=nicknames, relations=relations,
-        directed=bool(opts.directed))
+    data = {
+        'nicknames': nicknames,
+        'relations': relations,
+        'directed': bool(opts.directed),
+    }
     save_data(data, opts.output_filename)
 
 
