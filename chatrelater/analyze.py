@@ -19,7 +19,6 @@ nicknames with matching case are recognized.
 :license: MIT, see LICENSE for details.
 """
 
-from __future__ import with_statement
 from optparse import OptionParser
 from sys import stdout
 

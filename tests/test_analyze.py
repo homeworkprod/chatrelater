@@ -14,7 +14,6 @@ Run with py.test_.
 :license: MIT, see LICENSE for details.
 """
 
-from __future__ import with_statement
 import os
 from tempfile import mktemp
 
