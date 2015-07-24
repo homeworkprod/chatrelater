@@ -10,7 +10,7 @@ Chat Relater
 
 It is actually a conceptual clone of the PieSpy_ Social Network Bot.
 However, Chat Relater does not act as an IRC bot (although this could be
-easily accomplished by making use of the irclib_ package), but therefore
+easily accomplished by making use of the irc_ package), but therefore
 allows to be run on any logfiles that produce similar output to those
 created by XChat_. Of course, this includes logs from Jabber, SILC or
 any other communication (but it might require some minor changes to the
@@ -25,7 +25,7 @@ in the setup script.
 .. _GraphViz:   http://www.graphviz.org/
 .. _YAML:       http://yaml.org/spec/current.html
 .. _PieSpy:     http://www.jibble.org/piespy/
-.. _irclib:     http://python-irclib.sourceforge.net/
+.. _irc:        https://bitbucket.org/jaraco/irc
 .. _XChat:      http://www.xchat.org/
 .. _Python:     http://www.python.org/
 
