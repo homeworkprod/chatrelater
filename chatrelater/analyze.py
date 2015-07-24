@@ -151,12 +151,12 @@ def main():
 
     # Show details.
     if opts.verbose:
-        format = '%3dx %s <-> %s'
+        connection_template = '%3dx %s <-> %s'
         if opts.directed:
-            format = format.replace('<', '')
+            connection_template = connection_template.replace('<', '')
         print
         for rel in sorted(relations, key=lambda x: str.lower(x[0])):
-            print format % (rel[2], rel[0], rel[1])
+            print connection_template % (rel[2], rel[0], rel[1])
         print
         print 'Found %d nicknames in %d relations.' \
             % (len(nicknames), len(relations))
