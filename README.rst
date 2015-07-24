@@ -19,8 +19,14 @@ log reader).
 The GraphViz usage is pretty basic and output may be improved somehow,
 but so far, the graphs created by PieSpy look **much** nicer.
 
-Python_ 2.7 or higher is required. Required Python packages are declared
-in the setup script.
+Python_ 2.7 or higher is required.
+
+The required Python packages can be installed via pip:
+
+.. code:: sh
+
+    $ pip install -r requirements.txt
+
 
 .. _GraphViz:   http://www.graphviz.org/
 .. _YAML:       http://yaml.org/spec/current.html

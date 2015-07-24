@@ -29,12 +29,4 @@ setup(
         'Topic :: Communications :: Chat',
         'Topic :: Internet :: Log Analysis',
     ],
-    install_requires=[
-        'pydot >= 0.9.10',
-        'pyparsing >= 1.4.6',
-        'PyYAML >= 3.05',
-    ],
-    extras_require={
-        'test': ['py >= 0.9.0'],
-    },
 )
