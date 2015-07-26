@@ -36,15 +36,15 @@ def generate_dot(nicknames, relations, directed=False):
         dot.set_type('graph')
 
     # Create nodes.
-    for nick in nicknames:
-        dot.add_node(Node(nick, label=nick))
+    for nickname in nicknames:
+        dot.add_node(Node(nickname, label=nickname))
 
     # Create edges.
     max_count = float(max(rel[2] for rel in relations))
     max_width = 4
-    for nick1, nick2, count in sorted(relations, key=lambda x: x[0]):
+    for nickname1, nickname2, count in sorted(relations, key=lambda x: x[0]):
         width = (count / max_count * max_width) + 1
-        dot.add_edge(Edge(nick1, nick2, style='setlinewidth(%d)' % width))
+        dot.add_edge(Edge(nickname1, nickname2, style='setlinewidth(%d)' % width))
 
     return dot
 
