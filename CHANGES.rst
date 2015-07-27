@@ -2,6 +2,14 @@ Chat Relater Changelog
 ======================
 
 
+Version 0.3
+-----------
+
+(released on ?)
+
+- Ported command line argument handling from 'optparse' to 'argparse'.
+
+
 Version 0.2
 -----------
 

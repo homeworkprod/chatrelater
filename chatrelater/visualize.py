@@ -16,7 +16,7 @@ various formats can be written.
 :License: MIT, see LICENSE for details.
 """
 
-from optparse import OptionParser
+from argparse import ArgumentParser
 
 from graphviz import Digraph, Graph
 from graphviz.files import ENGINES, FORMATS
@@ -24,13 +24,17 @@ from graphviz.files import ENGINES, FORMATS
 from analyze import load_data
 
 
-def generate_dot(nicknames, relations, name, format, engine, directed=False):
+DEFAULT_FORMAT = 'dot'
+DEFAULT_PROGRAM = 'dot'
+
+
+def generate_dot(nicknames, relations, name, format, program, directed=False):
     """Create dot graph representations."""
     # Create graph.
     dot_attrs = {
         'name': name,
         'format': format,
-        'engine': engine,
+        'engine': program,
     }
     if directed:
         dot = Digraph(**dot_attrs)
@@ -58,27 +62,46 @@ def write_file(dot):
         % (dot.format, rendered_filename, dot.engine)
 
 
-if __name__ == '__main__':
-    # Create parser.
-    parser = OptionParser(
-        usage='usage: %prog [options] <data filename> <output filename prefix>')
-    parser.add_option('-f', '--format', dest='format', default='dot',
+
+def parse_args():
+    """Setup and apply the command line parser."""
+    parser = ArgumentParser()
+
+    parser.add_argument(
+        '-f', '--format',
+        dest='format',
+        default=DEFAULT_FORMAT,
         choices=sorted(FORMATS),
-        help='output format supported by GraphViz (default: dot)')
-    parser.add_option('-p', '--prog', dest='prog', default='dot',
+        help='output format supported by GraphViz (default: {})'.format(DEFAULT_FORMAT))
+
+    parser.add_argument(
+        '-p', '--program',
+        dest='program',
+        default=DEFAULT_PROGRAM,
         choices=sorted(ENGINES),
-        help='GraphViz program to create output with (default: dot)')
+        help='GraphViz program to create output with (default: {})'.format(DEFAULT_PROGRAM))
 
-    # Parse command-line input.
-    opts, args = parser.parse_args()
-    try:
-        input_filename, output_filename = args
-    except ValueError:
-        parser.print_help()
-        parser.exit()
+    parser.add_argument(
+        'input_filename',
+        metavar='INPUT_FILENAME')
 
-    # Draw graphs.
-    nicknames, relations, directed = load_data(input_filename)
-    dot = generate_dot(nicknames, relations, output_filename, opts.format,
-                       engine=opts.prog, directed=directed)
+    parser.add_argument(
+        'output_filename_prefix',
+        metavar='OUTPUT_FILENAME_PREFIX')
+
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+
+    nicknames, relations, directed = load_data(args.input_filename)
+
+    dot = generate_dot(nicknames, relations, args.output_filename_prefix,
+                       args.format, program=args.program, directed=directed)
+
     write_file(dot)
+
+
+if __name__ == '__main__':
+    main()

@@ -18,7 +18,7 @@ nicknames with matching case are recognized.
 :License: MIT, see LICENSE for details.
 """
 
-from optparse import OptionParser
+from argparse import ArgumentParser
 from sys import stdout
 
 import yaml
@@ -125,34 +125,52 @@ def load_data(filename):
     return d['nicknames'], d['relations'], d['directed']
 
 
-def main():
-    # Create parser.
-    parser = OptionParser(
-        usage='usage: %prog [options] <filename1> [filename2] ...')
-    parser.add_option('-d', '--directed', action='store_true', dest='directed',
+def parse_args():
+    """Setup and apply the command line parser."""
+    parser = ArgumentParser()
+
+    parser.add_argument(
+        '-d', '--directed',
+        action='store_true',
+        dest='directed',
         help='preserve directed relations instead of unifying them')
-    parser.add_option('-n', '--no-unrelated-nicknames', action='store_true',
+
+    parser.add_argument(
+        '-n', '--no-unrelated-nicknames',
+        action='store_true',
         dest='no_unrelated_nicknames',
         help='exclude unrelated nicknames to avoid unconnected nodes to be drawn')
-    parser.add_option('-o', '--output-filename', dest='output_filename',
-        help='save the output to FILE (default: print to stdout)', metavar='FILE')
-    parser.add_option('-v', '--verbose', action='store_true', dest='verbose',
+
+    parser.add_argument(
+        '-o', '--output-filename',
+        dest='output_filename',
+        help='save the output to this file (default: write to STDOUT)')
+
+    parser.add_argument(
+        '-v', '--verbose',
+        action='store_true',
+        dest='verbose',
         help='display the resulting relations')
 
-    # Parse input.
-    opts, args = parser.parse_args()
-    if not args:
-        parser.print_help()
-        parser.exit()
+    parser.add_argument(
+        'filenames',
+        metavar='FILENAME',
+        nargs='+')
+
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
 
     # Analyze data.
-    nicknames, relations = analyze(args, opts.directed,
-        opts.no_unrelated_nicknames)
+    nicknames, relations = analyze(args.filenames, args.directed,
+                                   args.no_unrelated_nicknames)
 
     # Show details.
-    if opts.verbose:
+    if args.verbose:
         connection_template = '%3dx %s <-> %s'
-        if opts.directed:
+        if args.directed:
             connection_template = connection_template.replace('<', '')
         print
         for rel in sorted(relations, key=lambda x: str.lower(x[0])):
@@ -165,9 +183,9 @@ def main():
     data = {
         'nicknames': nicknames,
         'relations': relations,
-        'directed': bool(opts.directed),
+        'directed': args.directed,
     }
-    save_data(data, opts.output_filename)
+    save_data(data, args.output_filename)
 
 
 if __name__ == '__main__':
