@@ -10,7 +10,7 @@ def read_readme():
 
 setup(
     name='ChatRelater',
-    version='0.1',
+    version='0.2',
     description='Analyze and visualize relations between chat users.',
     long_description=read_readme(),
     license='MIT',

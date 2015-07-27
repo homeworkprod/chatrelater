@@ -12,7 +12,7 @@ various formats can be written.
 
 .. _GraphViz:   http://www.graphviz.org/
 
-:Copyright: 2007 Jochen Kupperschmidt
+:Copyright: 2007-2015 Jochen Kupperschmidt
 :License: MIT, see LICENSE for details.
 """
 

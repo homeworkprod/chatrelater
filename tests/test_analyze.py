@@ -9,7 +9,7 @@ Run with py.test_.
 
 .. _py.test: http://codespeak.net/py/dist/test.html
 
-:Copyright: 2007 Jochen Kupperschmidt
+:Copyright: 2007-2015 Jochen Kupperschmidt
 :License: MIT, see LICENSE for details.
 """
 

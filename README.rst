@@ -39,7 +39,7 @@ The required Python packages can be installed via pip:
 .. _Python:     http://www.python.org/
 
 
-:Copyright: 2007 `Jochen Kupperschmidt <http://homework.nwsnet.de/>`_
-:Date: 05-Jul-2007
+:Copyright: 2007-2015 `Jochen Kupperschmidt <http://homework.nwsnet.de/>`_
+:Date: 27-Jul-2015
 :License: MIT, see LICENSE for details.
-:Version: 0.1
+:Version: 0.2

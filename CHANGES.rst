@@ -5,7 +5,7 @@ Chat Relater Changelog
 Version 0.2
 -----------
 
-(released on ???)
+(released on 27-Jul-2015)
 
 - Dropped support for Python versions below 2.7.
 - Switched DOT library from 'pydot' to 'graphviz'.
