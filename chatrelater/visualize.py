@@ -19,7 +19,7 @@ various formats can be written.
 from optparse import OptionParser
 
 from graphviz import Digraph, Graph
-from graphviz.files import FORMATS
+from graphviz.files import ENGINES, FORMATS
 
 from analyze import load_data
 
@@ -66,7 +66,7 @@ if __name__ == '__main__':
         choices=sorted(FORMATS),
         help='output format supported by GraphViz (default: dot)')
     parser.add_option('-p', '--prog', dest='prog', default='dot',
-        choices=('dot', 'twopi', 'neato', 'circo', 'fdp'),
+        choices=sorted(ENGINES),
         help='GraphViz program to create output with (default: dot)')
 
     # Parse command-line input.
