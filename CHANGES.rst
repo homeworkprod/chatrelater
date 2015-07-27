@@ -8,6 +8,8 @@ Version 0.3
 (released on ?)
 
 - Ported command line argument handling from 'optparse' to 'argparse'.
+- Switched from YAML to JSON as the intermediate format produced by the
+  analyzer.
 
 
 Version 0.2

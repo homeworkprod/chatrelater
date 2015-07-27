@@ -4,7 +4,7 @@ Chat Relater
 **Chat Relater** is a tool consisting of two command-line scripts:
 
 * The analyzer extracts user relations from chat logs. The gained data
-  is serialized as YAML.
+  is serialized as JSON.
 
 * The visualizer takes that data, generates a DOT_ file, and calls the
   GraphViz_ application to render the graph in the requested output
@@ -32,7 +32,6 @@ The required Python packages can be installed via pip:
 
 .. _DOT:        http://www.graphviz.org/doc/info/lang.html
 .. _GraphViz:   http://www.graphviz.org/
-.. _YAML:       http://yaml.org/spec/current.html
 .. _PieSpy:     http://www.jibble.org/piespy/
 .. _irc:        https://bitbucket.org/jaraco/irc
 .. _XChat:      http://www.xchat.org/

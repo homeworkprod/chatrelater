@@ -19,9 +19,8 @@ nicknames with matching case are recognized.
 """
 
 from argparse import ArgumentParser
+import json
 from sys import stdout
-
-import yaml
 
 
 # ---------------------------------------------------------------- #
@@ -108,7 +107,7 @@ def save_data(data, filename=None):
     with the keyword names as keys.
     """
     def dump(stream):
-        yaml.safe_dump(data, stream)
+        json.dump(data, stream)
 
     if filename:
         with open(filename, 'wb') as f:
@@ -120,7 +119,7 @@ def save_data(data, filename=None):
 def load_data(filename):
     """Import data from file."""
     with open(filename, 'rb') as f:
-        d = yaml.safe_load(f)
+        d = json.load(f)
 
     return d['nicknames'], d['relations'], d['directed']
 
@@ -181,7 +180,7 @@ def main():
 
     # Store result.
     data = {
-        'nicknames': nicknames,
+        'nicknames': list(nicknames),
         'relations': relations,
         'directed': args.directed,
     }
