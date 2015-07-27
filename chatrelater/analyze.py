@@ -34,13 +34,25 @@ def iter_files(filenames):
                 yield line
 
 
-def parse_logfile(lineiter):
+def parse_logfile(lines):
     """Return a set of nicknames and a list of (nickname, message) tuples
     extracted from the given lines.
     """
     nicknames = set()
     loglines = []
-    for line in lineiter:
+
+    for nickname, message in parse_log(lines):
+        nicknames.add(nickname)
+        loglines.append((nickname, message))
+
+    return nicknames, loglines
+
+
+def parse_log(lines):
+    """Select relevant lines and split each of those into a
+    (nickname, message) pair.
+    """
+    for line in lines:
         # Skip everything that is not a public (or query) message
         # (joins, parts, modes, notices etc.).
         if not line.startswith('<'):
@@ -48,12 +60,9 @@ def parse_logfile(lineiter):
 
         try:
             nickname, message = line[1:].strip().split('> ', 1)
-            nicknames.add(nickname)
-            loglines.append((nickname, message))
+            yield nickname, message
         except ValueError:
             pass
-
-    return nicknames, loglines
 
 
 def relate_nicknames(nicknames, loglines):
