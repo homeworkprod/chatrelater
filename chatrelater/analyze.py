@@ -26,6 +26,7 @@ from sys import stdout
 # ---------------------------------------------------------------- #
 # parsing and analysis
 
+
 def iter_files(filenames):
     """Yield lines from multiple files."""
     for fn in filenames:
@@ -60,9 +61,25 @@ def parse_log(lines):
 
         try:
             nickname, message = line[1:].strip().split('> ', 1)
+            nickname = clean_nickname(nickname)
             yield nickname, message
         except ValueError:
             pass
+
+
+STATUS_SYMBOLS = frozenset('@%+')
+
+
+def clean_nickname(nickname):
+    """Remove potential status symbol in front of nickname.
+
+    Symbols that will be removed are:
+
+    - `@` ("op")
+    - `%` ("halfop")
+    - `+` ("voice")
+    """
+    return nickname[1:] if nickname[0] in STATUS_SYMBOLS else nickname
 
 
 def relate_nicknames(nicknames, loglines):

@@ -10,6 +10,7 @@ Version 0.3
 - Ported command line argument handling from 'optparse' to 'argparse'.
 - Switched from YAML to JSON as the intermediate format produced by the
   analyzer.
+- Remove potential status symbols from nicknames.
 
 
 Version 0.2
