@@ -8,12 +8,9 @@ Chat Relater's Visualizer
 Visualize relations between chat partners.
 
 For graphical output, GraphViz_ will be utilized (has to be installed) and
-various formats can be written. Also, the pydot_ Python bindings for it are
-needed, which itself require the pyparsing_ library.
+various formats can be written.
 
 .. _GraphViz:   http://www.graphviz.org/
-.. _pydot:      http://dkbza.org/pydot.html
-.. _Pyparsing:  http://pyparsing.wikispaces.com/
 
 :Copyright: 2007 Jochen Kupperschmidt
 :License: MIT, see LICENSE for details.
@@ -21,39 +18,44 @@ needed, which itself require the pyparsing_ library.
 
 from optparse import OptionParser
 
-from pydot import Dot, Node, Edge
+from graphviz import Digraph, Graph
+from graphviz.files import FORMATS
 
 from analyze import load_data
 
 
-def generate_dot(nicknames, relations, directed=False):
+def generate_dot(nicknames, relations, name, format, engine, directed=False):
     """Create dot graph representations."""
     # Create graph.
-    dot = Dot('Relations')
+    dot_attrs = {
+        'name': name,
+        'format': format,
+        'engine': engine,
+    }
     if directed:
-        dot.set_type('digraph')
+        dot = Digraph(**dot_attrs)
     else:
-        dot.set_type('graph')
+        dot = Graph(**dot_attrs)
 
     # Create nodes.
     for nickname in nicknames:
-        dot.add_node(Node(nickname, label=nickname))
+        dot.node(nickname, label=nickname)
 
     # Create edges.
     max_count = float(max(rel[2] for rel in relations))
     max_width = 4
     for nickname1, nickname2, count in sorted(relations, key=lambda x: x[0]):
         width = (count / max_count * max_width) + 1
-        dot.add_edge(Edge(nickname1, nickname2, style='setlinewidth(%d)' % width))
+        dot.edge(nickname1, nickname2, style='setlinewidth(%d)' % width)
 
     return dot
 
 
-def write_file(dot, name, prog, format):
+def write_file(dot):
     """Create a graphics file from the DOT data."""
-    filename = '%s_%s.%s' % (name, prog, format)
-    dot.write(filename, prog, format)
-    print "Wrote %s output to '%s' using %s." % (format, filename, prog)
+    rendered_filename = dot.render(filename=dot.name)
+    print "Wrote %s output to '%s' using %s." \
+        % (dot.format, rendered_filename, dot.engine)
 
 
 if __name__ == '__main__':
@@ -61,7 +63,7 @@ if __name__ == '__main__':
     parser = OptionParser(
         usage='usage: %prog [options] <data filename> <output filename prefix>')
     parser.add_option('-f', '--format', dest='format', default='dot',
-        choices=(Dot.formats + ['raw']),
+        choices=sorted(FORMATS),
         help='output format supported by GraphViz (default: dot)')
     parser.add_option('-p', '--prog', dest='prog', default='dot',
         choices=('dot', 'twopi', 'neato', 'circo', 'fdp'),
@@ -77,5 +79,6 @@ if __name__ == '__main__':
 
     # Draw graphs.
     nicknames, relations, directed = load_data(input_filename)
-    dot = generate_dot(nicknames, relations, directed)
-    write_file(dot, output_filename, opts.prog, opts.format)
+    dot = generate_dot(nicknames, relations, output_filename, opts.format,
+                       engine=opts.prog, directed=directed)
+    write_file(dot)

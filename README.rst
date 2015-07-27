@@ -5,8 +5,10 @@ Chat Relater
 
 * The analyzer extracts user relations from chat logs. The gained data
   is serialized as YAML.
-* The visualizer takes that data and utilizes GraphViz_ to create a
-  graph.
+
+* The visualizer takes that data, generates a DOT_ file, and calls the
+  GraphViz_ application to render the graph in the requested output
+  format (e. g. PDF, PNG, SVG).
 
 It is actually a conceptual clone of the PieSpy_ Social Network Bot.
 However, Chat Relater does not act as an IRC bot (although this could be
@@ -16,8 +18,8 @@ created by XChat_. Of course, this includes logs from Jabber, SILC or
 any other communication (but it might require some minor changes to the
 log reader).
 
-The GraphViz usage is pretty basic and output may be improved somehow,
-but so far, the graphs created by PieSpy look **much** nicer.
+The GraphViz_ usage is pretty basic and output may be improved somehow,
+but so far, the graphs created by PieSpy_ look **much** nicer.
 
 Python_ 2.7 or higher is required.
 
@@ -28,6 +30,7 @@ The required Python packages can be installed via pip:
     $ pip install -r requirements.txt
 
 
+.. _DOT:        http://www.graphviz.org/doc/info/lang.html
 .. _GraphViz:   http://www.graphviz.org/
 .. _YAML:       http://yaml.org/spec/current.html
 .. _PieSpy:     http://www.jibble.org/piespy/
