@@ -5,7 +5,7 @@ Chat Relater Changelog
 Version 0.3
 -----------
 
-(released on ?)
+(released on 09-Aug-2015)
 
 - Introduced compatibility with Python 3.3 and 3.4.
 - Ported command line argument handling from 'optparse' to 'argparse'.

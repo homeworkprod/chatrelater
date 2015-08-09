@@ -75,6 +75,6 @@ created in the process.
 
 
 :Copyright: 2007-2015 `Jochen Kupperschmidt <http://homework.nwsnet.de/>`_
-:Date: 27-Jul-2015
+:Date: 09-Aug-2015
 :License: MIT, see LICENSE for details.
-:Version: 0.2
+:Version: 0.3
