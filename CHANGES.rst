@@ -13,6 +13,7 @@ Version 0.3
   analyzer.
 - Remove potential status symbols from nicknames.
 - Improved nickname recognition.
+- Moved scripts out of the package.
 
 
 Version 0.2
