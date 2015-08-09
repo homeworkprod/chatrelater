@@ -29,6 +29,13 @@ The required Python packages can be installed via pip:
 
     $ pip install -r requirements.txt
 
+To run tests, install the dependencies once, then run tests with tox:
+
+.. code:: sh
+
+    $ pip install -r requirements-test.txt
+    $ tox
+
 
 .. _DOT:        http://www.graphviz.org/doc/info/lang.html
 .. _GraphViz:   http://www.graphviz.org/

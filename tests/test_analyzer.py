@@ -1,13 +1,6 @@
 # -*- coding: utf-8 -*-
 
 """
-Tests for Chat Relater's Analyzer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Run with pytest_.
-
-.. _pytest: http://pytest.org/
-
 :Copyright: 2007-2015 Jochen Kupperschmidt
 :License: MIT, see LICENSE for details.
 """
