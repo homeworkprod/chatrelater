@@ -57,7 +57,8 @@ def test_relate_nicknames():
         ('Jane', 'John: I am fine, thanks'),
         ('Mary', 'John?'),
         ('Mary', 'John!'),
-        ('Jane', 'John seems to have disappeared...'),
+        ('Jane', 'John seems to have disappeared …'),
+        ('Jane', '@John: o hai'),
     ]
 
     expected_relations = [
@@ -65,6 +66,7 @@ def test_relate_nicknames():
         ('Jane', 'John'),
         ('Mary', 'John'),
         ('Mary', 'John'),
+        ('Jane', 'John'),
         ('Jane', 'John'),
     ]
 

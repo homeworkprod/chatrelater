@@ -95,7 +95,7 @@ def relate_nicknames(nicknames, loglines):
     Line beginnings are checked to find textual references between users.
     """
     for nickname, message in loglines:
-        first = message.split(' ', 1)[0].strip(':,.?!')
+        first = message.split(' ', 1)[0].strip(':,.?!@')
         if first in nicknames:
             yield nickname, first
 
