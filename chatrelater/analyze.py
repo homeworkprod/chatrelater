@@ -8,9 +8,13 @@ Chat Relater's Analyzer
 Analyze (not necessarily) IRC logfiles and determine relations between
 chat users.
 
-So far, only logfiles produced by XChat_ were tested. Also, users are
-expected to use the nickname autocompletion feature, so only exact
-nicknames with matching case are recognized.
+So far, only logfiles produced by XChat_ were tested.
+
+For a line to be recognized, it has to start with a nickname in angle
+brackets, followed by a space (e. g. `<SomeUser23> hey what's up?`).
+
+Also, users are expected to use the nickname autocompletion feature, so
+only exact nicknames with matching case are recognized.
 
 .. _XChat: http://www.xchat.org/
 
