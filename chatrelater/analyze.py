@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -22,15 +21,7 @@ only exact nicknames with matching case are recognized.
 :License: MIT, see LICENSE for details.
 """
 
-from __future__ import print_function
-from argparse import ArgumentParser
-
 from .nicknames import clean_nickname, NicknameRegistry
-from .serialization import save_data
-
-
-# ---------------------------------------------------------------- #
-# parsing and analysis
 
 
 def iter_files(filenames):
@@ -116,74 +107,3 @@ def analyze(filenames, directed=False, no_unrelated_nicknames=False):
             nicknames.update(rel[:2])
 
     return nicknames, relations
-
-
-# ---------------------------------------------------------------- #
-# command-line argument parsing
-
-
-def parse_args():
-    """Setup and apply the command line parser."""
-    parser = ArgumentParser()
-
-    parser.add_argument(
-        '-d', '--directed',
-        action='store_true',
-        dest='directed',
-        help='preserve directed relations instead of unifying them')
-
-    parser.add_argument(
-        '-n', '--no-unrelated-nicknames',
-        action='store_true',
-        dest='no_unrelated_nicknames',
-        help='exclude unrelated nicknames to avoid unconnected nodes to be drawn')
-
-    parser.add_argument(
-        '-o', '--output-filename',
-        dest='output_filename',
-        help='save the output to this file (default: write to STDOUT)')
-
-    parser.add_argument(
-        '-v', '--verbose',
-        action='store_true',
-        dest='verbose',
-        help='display the resulting relations')
-
-    parser.add_argument(
-        'filenames',
-        metavar='FILENAME',
-        nargs='+')
-
-    return parser.parse_args()
-
-
-def main():
-    args = parse_args()
-
-    # Analyze data.
-    nicknames, relations = analyze(args.filenames, args.directed,
-                                   args.no_unrelated_nicknames)
-
-    # Show details.
-    if args.verbose:
-        connection_template = '%3dx %s <-> %s'
-        if args.directed:
-            connection_template = connection_template.replace('<', '')
-        print()
-        for rel in sorted(relations, key=lambda x: str.lower(x[0])):
-            print(connection_template % (rel[2], rel[0], rel[1]))
-        print()
-        print('Found %d nicknames in %d relations.'
-            % (len(nicknames), len(relations)))
-
-    # Store result.
-    data = {
-        'nicknames': list(nicknames),
-        'relations': relations,
-        'directed': args.directed,
-    }
-    save_data(data, args.output_filename)
-
-
-if __name__ == '__main__':
-    main()
