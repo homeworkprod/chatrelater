@@ -25,11 +25,11 @@ from chatrelater.analyze import parse_logfile, clean_nickname, \
 
 def test_parse_logfile():
     lines = [
-        '<John> one two',
-        '* some action',
-        '<Jane> threefourfive',
-        'Someone- A message from someone!',
-        '<Mary> foobar',
+        b'<John> one two',
+        b'* some action',
+        b'<Jane> threefourfive',
+        b'Someone- A message from someone!',
+        b'<Mary> foobar',
     ]
 
     expected_nicknames = {'John', 'Jane', 'Mary'}

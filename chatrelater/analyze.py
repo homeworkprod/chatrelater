@@ -55,6 +55,8 @@ def parse_log(lines):
     (nickname, message) pair.
     """
     for line in lines:
+        line = line.decode('utf-8')
+
         # Skip everything that is not a public (or query) message
         # (joins, parts, modes, notices etc.).
         if not line.startswith('<'):
