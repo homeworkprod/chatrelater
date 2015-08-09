@@ -21,6 +21,10 @@ log reader).
 The GraphViz_ usage is pretty basic and output may be improved somehow,
 but so far, the graphs created by PieSpy_ look **much** nicer.
 
+
+Requirements
+------------
+
 Python_ 2.7+ or 3.3+ is required.
 
 The required Python packages can be installed via pip:
@@ -29,12 +33,37 @@ The required Python packages can be installed via pip:
 
     $ pip install -r requirements.txt
 
+
+Tests
+-----
+
 To run tests, install the dependencies once, then run tests with tox:
 
 .. code:: sh
 
     $ pip install -r requirements-test.txt
     $ tox
+
+
+Usage
+-----
+
+Run the analyzer on one or more log files, saving the intermediate
+results to another file (`chat.json`):
+
+.. code:: sh
+
+    $ ./analyze.py -o chat.json chat_today.log chat_yesterday.log
+
+Create a nice graph (using the 'twopi' program) from the results
+(`chat.json`) and save it to a PNG image (`graph.png`):
+
+.. code:: sh
+
+    $ ./visualize.py -f png -p twopi chat.json graph
+
+And intermediate file containing the 'dot' description (`graph`) will be
+created in the process.
 
 
 .. _DOT:        http://www.graphviz.org/doc/info/lang.html
