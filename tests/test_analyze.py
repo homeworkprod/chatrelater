@@ -16,10 +16,11 @@ Run with pytest_.
 import os
 from tempfile import mktemp
 
+import pytest
 from pytest import raises
 
-from chatrelater.analyze import (parse_logfile, relate_nicknames,
-    compress_relations, save_data, load_data)
+from chatrelater.analyze import parse_logfile, clean_nickname, \
+    relate_nicknames, compress_relations, save_data, load_data
 
 
 def test_parse_logfile():
@@ -40,6 +41,16 @@ def test_parse_logfile():
     ]
 
     assert parse_logfile(lines) == (expected_nicknames, expected_loglines)
+
+
+@pytest.mark.parametrize('input, expected', [
+  ('@oper',   'oper'   ),
+  ('%halfop', 'halfop' ),
+  ('+voice',  'voice'  ),
+  ('nothing', 'nothing'),
+])
+def test_clean_nickname(input, expected):
+    assert clean_nickname(input) == expected
 
 
 def test_relate_nicknames():
