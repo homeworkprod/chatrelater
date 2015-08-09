@@ -16,6 +16,7 @@ various formats can be written.
 :License: MIT, see LICENSE for details.
 """
 
+from __future__ import print_function
 from argparse import ArgumentParser
 
 from graphviz import Digraph, Graph
@@ -58,8 +59,8 @@ def generate_dot(nicknames, relations, name, format, program, directed=False):
 def write_file(dot):
     """Create a graphics file from the DOT data."""
     rendered_filename = dot.render(filename=dot.name)
-    print "Wrote %s output to '%s' using %s." \
-        % (dot.format, rendered_filename, dot.engine)
+    print("Wrote %s output to '%s' using %s."
+        % (dot.format, rendered_filename, dot.engine))
 
 
 

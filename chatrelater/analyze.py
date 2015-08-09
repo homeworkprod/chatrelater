@@ -18,6 +18,7 @@ nicknames with matching case are recognized.
 :License: MIT, see LICENSE for details.
 """
 
+from __future__ import print_function
 from argparse import ArgumentParser
 import json
 from sys import stdout
@@ -197,12 +198,12 @@ def main():
         connection_template = '%3dx %s <-> %s'
         if args.directed:
             connection_template = connection_template.replace('<', '')
-        print
+        print()
         for rel in sorted(relations, key=lambda x: str.lower(x[0])):
-            print connection_template % (rel[2], rel[0], rel[1])
-        print
-        print 'Found %d nicknames in %d relations.' \
-            % (len(nicknames), len(relations))
+            print(connection_template % (rel[2], rel[0], rel[1]))
+        print()
+        print('Found %d nicknames in %d relations.'
+            % (len(nicknames), len(relations)))
 
     # Store result.
     data = {
