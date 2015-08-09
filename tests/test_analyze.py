@@ -20,7 +20,8 @@ import pytest
 from pytest import raises
 
 from chatrelater.analyze import parse_logfile, clean_nickname, \
-    relate_nicknames, compress_relations, save_data, load_data
+    relate_nicknames, compress_relations
+from chatrelater.serialization import save_data, load_data
 
 
 def test_parse_logfile():

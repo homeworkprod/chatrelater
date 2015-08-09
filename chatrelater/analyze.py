@@ -20,8 +20,8 @@ nicknames with matching case are recognized.
 
 from __future__ import print_function
 from argparse import ArgumentParser
-import json
-from sys import stdout
+
+from .serialization import save_data
 
 
 # ---------------------------------------------------------------- #
@@ -126,31 +126,7 @@ def analyze(filenames, directed=False, no_unrelated_nicknames=False):
 
 
 # ---------------------------------------------------------------- #
-# serialization
-
-
-def save_data(data, filename=None):
-    """Export data to file.
-
-    Keyword arguments are attached to the shelve dictionary
-    with the keyword names as keys.
-    """
-    def dump(stream):
-        json.dump(data, stream)
-
-    if filename:
-        with open(filename, 'w') as f:
-            dump(f)
-    else:
-        dump(stdout)
-
-
-def load_data(filename):
-    """Import data from file."""
-    with open(filename, 'r') as f:
-        d = json.load(f)
-
-    return d['nicknames'], d['relations'], d['directed']
+# command-line argument parsing
 
 
 def parse_args():

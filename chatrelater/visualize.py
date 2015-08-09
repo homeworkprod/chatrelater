@@ -22,7 +22,7 @@ from argparse import ArgumentParser
 from graphviz import Digraph, Graph
 from graphviz.files import ENGINES, FORMATS
 
-from analyze import load_data
+from .serialization import load_data
 
 
 DEFAULT_FORMAT = 'dot'
