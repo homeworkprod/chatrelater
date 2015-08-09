@@ -7,6 +7,7 @@ Version 0.3
 
 (released on ?)
 
+- Introduced compatibility with Python 3.3 and 3.4.
 - Ported command line argument handling from 'optparse' to 'argparse'.
 - Switched from YAML to JSON as the intermediate format produced by the
   analyzer.
