@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
@@ -17,12 +16,8 @@ various formats can be written.
 """
 
 from __future__ import print_function
-from argparse import ArgumentParser
 
 from graphviz import Digraph, Graph
-from graphviz.files import ENGINES, FORMATS
-
-from .serialization import load_data
 
 
 DEFAULT_FORMAT = 'dot'
@@ -61,48 +56,3 @@ def write_file(dot):
     rendered_filename = dot.render(filename=dot.name)
     print("Wrote %s output to '%s' using %s."
         % (dot.format, rendered_filename, dot.engine))
-
-
-
-def parse_args():
-    """Setup and apply the command line parser."""
-    parser = ArgumentParser()
-
-    parser.add_argument(
-        '-f', '--format',
-        dest='format',
-        default=DEFAULT_FORMAT,
-        choices=sorted(FORMATS),
-        help='output format supported by GraphViz (default: {})'.format(DEFAULT_FORMAT))
-
-    parser.add_argument(
-        '-p', '--program',
-        dest='program',
-        default=DEFAULT_PROGRAM,
-        choices=sorted(ENGINES),
-        help='GraphViz program to create output with (default: {})'.format(DEFAULT_PROGRAM))
-
-    parser.add_argument(
-        'input_filename',
-        metavar='INPUT_FILENAME')
-
-    parser.add_argument(
-        'output_filename_prefix',
-        metavar='OUTPUT_FILENAME_PREFIX')
-
-    return parser.parse_args()
-
-
-def main():
-    args = parse_args()
-
-    nicknames, relations, directed = load_data(args.input_filename)
-
-    dot = generate_dot(nicknames, relations, args.output_filename_prefix,
-                       args.format, program=args.program, directed=directed)
-
-    write_file(dot)
-
-
-if __name__ == '__main__':
-    main()
