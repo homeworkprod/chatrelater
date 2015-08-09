@@ -139,7 +139,7 @@ def save_data(data, filename=None):
         json.dump(data, stream)
 
     if filename:
-        with open(filename, 'wb') as f:
+        with open(filename, 'w') as f:
             dump(f)
     else:
         dump(stdout)
@@ -147,7 +147,7 @@ def save_data(data, filename=None):
 
 def load_data(filename):
     """Import data from file."""
-    with open(filename, 'rb') as f:
+    with open(filename, 'r') as f:
         d = json.load(f)
 
     return d['nicknames'], d['relations'], d['directed']
