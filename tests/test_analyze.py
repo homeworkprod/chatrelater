@@ -5,9 +5,9 @@
 Tests for Chat Relater's Analyzer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Run with py.test_.
+Run with pytest_.
 
-.. _py.test: http://codespeak.net/py/dist/test.html
+.. _pytest: http://pytest.org/
 
 :Copyright: 2007-2015 Jochen Kupperschmidt
 :License: MIT, see LICENSE for details.
@@ -16,7 +16,7 @@ Run with py.test_.
 import os
 from tempfile import mktemp
 
-from py.test import raises
+from pytest import raises
 
 from chatrelater.analyze import (parse_logfile, relate_nicknames,
     compress_relations, save_data, load_data)
