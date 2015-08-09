@@ -21,7 +21,7 @@ log reader).
 The GraphViz_ usage is pretty basic and output may be improved somehow,
 but so far, the graphs created by PieSpy_ look **much** nicer.
 
-Python_ 2.7 or higher is required.
+Python_ 2.7+ or 3.3+ is required.
 
 The required Python packages can be installed via pip:
 
