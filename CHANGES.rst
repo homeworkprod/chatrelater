@@ -12,6 +12,7 @@ Version 0.3
 - Switched from YAML to JSON as the intermediate format produced by the
   analyzer.
 - Remove potential status symbols from nicknames.
+- Improved nickname recognition.
 
 
 Version 0.2

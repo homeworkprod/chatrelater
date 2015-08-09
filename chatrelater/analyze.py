@@ -25,6 +25,7 @@ only exact nicknames with matching case are recognized.
 from __future__ import print_function
 from argparse import ArgumentParser
 
+from .nicknames import NicknameRegistry
 from .serialization import save_data
 
 
@@ -94,10 +95,13 @@ def relate_nicknames(nicknames, loglines):
 
     Line beginnings are checked to find textual references between users.
     """
-    for nickname, message in loglines:
-        first = message.split(' ', 1)[0].strip(':,.?!@')
-        if first in nicknames:
-            yield nickname, first
+    nickname_registry = NicknameRegistry(nicknames)
+
+    for author_nickname, message in loglines:
+        addressed_nickname = message.split(' ', 1)[0].strip(':,.?!@')
+        matching_addressed_nickname = nickname_registry.find(addressed_nickname)
+        if matching_addressed_nickname:
+            yield author_nickname, matching_addressed_nickname
 
 
 def compress_relations(relations, unify=False):

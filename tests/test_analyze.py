@@ -57,6 +57,7 @@ def test_relate_nicknames():
         ('Jane', 'John: I am fine, thanks'),
         ('Mary', 'John?'),
         ('Mary', 'John!'),
+        ('Mary', 'jane: nickname recognition should be case-insensitive'),
         ('Jane', 'John seems to have disappeared …'),
         ('Jane', '@John: o hai'),
     ]
@@ -66,6 +67,7 @@ def test_relate_nicknames():
         ('Jane', 'John'),
         ('Mary', 'John'),
         ('Mary', 'John'),
+        ('Mary', 'Jane'),
         ('Jane', 'John'),
         ('Jane', 'John'),
     ]
