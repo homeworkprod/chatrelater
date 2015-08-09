@@ -4,10 +4,8 @@
 chatrelater.visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Visualize relations between chat partners.
-
-For graphical output, GraphViz_ will be utilized (has to be installed) and
-various formats can be written.
+Visualize relations between chat partners using GraphViz_ (has to be
+installed).
 
 .. _GraphViz:   http://www.graphviz.org/
 

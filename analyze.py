@@ -5,7 +5,7 @@
 Chat Relater's Analyzer
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Analyze (not necessarily) IRC logfiles and determine relations between
+Analyze (not necessarily only) IRC logfiles and determine relations between
 chat users.
 
 So far, only logfiles produced by XChat_ were tested.
