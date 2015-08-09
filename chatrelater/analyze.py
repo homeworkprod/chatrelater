@@ -25,7 +25,7 @@ only exact nicknames with matching case are recognized.
 from __future__ import print_function
 from argparse import ArgumentParser
 
-from .nicknames import NicknameRegistry
+from .nicknames import clean_nickname, NicknameRegistry
 from .serialization import save_data
 
 
@@ -73,21 +73,6 @@ def parse_log(lines):
             yield nickname, message
         except ValueError:
             pass
-
-
-STATUS_SYMBOLS = frozenset('@%+')
-
-
-def clean_nickname(nickname):
-    """Remove potential status symbol in front of nickname.
-
-    Symbols that will be removed are:
-
-    - `@` ("op")
-    - `%` ("halfop")
-    - `+` ("voice")
-    """
-    return nickname[1:] if nickname[0] in STATUS_SYMBOLS else nickname
 
 
 def relate_nicknames(nicknames, loglines):

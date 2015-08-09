@@ -9,6 +9,21 @@ chatrelater.nicknames
 """
 
 
+STATUS_SYMBOLS = frozenset('@%+')
+
+
+def clean_nickname(nickname):
+    """Remove potential status symbol in front of nickname.
+
+    Symbols that will be removed are:
+
+    - `@` ("op")
+    - `%` ("halfop")
+    - `+` ("voice")
+    """
+    return nickname[1:] if nickname[0] in STATUS_SYMBOLS else nickname
+
+
 class NicknameRegistry(object):
 
     def __init__(self, nicknames):

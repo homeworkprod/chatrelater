@@ -12,10 +12,8 @@ Run with pytest_.
 :License: MIT, see LICENSE for details.
 """
 
-import pytest
-
-from chatrelater.analyze import parse_logfile, clean_nickname, \
-    relate_nicknames, compress_relations
+from chatrelater.analyze import parse_logfile, relate_nicknames, \
+    compress_relations
 
 
 def test_parse_logfile():
@@ -36,16 +34,6 @@ def test_parse_logfile():
     ]
 
     assert parse_logfile(lines) == (expected_nicknames, expected_loglines)
-
-
-@pytest.mark.parametrize('input, expected', [
-  ('@oper',   'oper'   ),
-  ('%halfop', 'halfop' ),
-  ('+voice',  'voice'  ),
-  ('nothing', 'nothing'),
-])
-def test_clean_nickname(input, expected):
-    assert clean_nickname(input) == expected
 
 
 def test_relate_nicknames():
