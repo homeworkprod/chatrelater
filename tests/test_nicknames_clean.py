@@ -10,11 +10,11 @@ import pytest
 from chatrelater.nicknames import clean_nickname
 
 
-@pytest.mark.parametrize('input, expected', [
+@pytest.mark.parametrize('dirty_nickname, expected', [
   ('@oper',   'oper'   ),
   ('%halfop', 'halfop' ),
   ('+voice',  'voice'  ),
   ('nothing', 'nothing'),
 ])
-def test_clean_nickname(input, expected):
-    assert clean_nickname(input) == expected
+def test_clean_nickname(dirty_nickname, expected):
+    assert clean_nickname(dirty_nickname) == expected
