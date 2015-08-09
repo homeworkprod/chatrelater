@@ -21,7 +21,7 @@ from argparse import ArgumentParser
 from graphviz.files import ENGINES, FORMATS
 
 from chatrelater.serialization import load_data
-from chatrelater.visualize import DEFAULT_FORMAT, DEFAULT_PROGRAM, \
+from chatrelater.visualization import DEFAULT_FORMAT, DEFAULT_PROGRAM, \
     generate_dot, write_file
 
 

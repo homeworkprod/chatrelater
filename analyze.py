@@ -25,7 +25,7 @@ only exact nicknames with matching case are recognized.
 from __future__ import print_function
 from argparse import ArgumentParser
 
-from chatrelater.analyze import analyze
+from chatrelater.analyzer import analyze
 from chatrelater.serialization import save_data
 
 

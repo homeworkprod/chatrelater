@@ -12,7 +12,7 @@ Run with pytest_.
 :License: MIT, see LICENSE for details.
 """
 
-from chatrelater.analyze import parse_logfile, relate_nicknames, \
+from chatrelater.analyzer import parse_logfile, relate_nicknames, \
     compress_relations
 
 

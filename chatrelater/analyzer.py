@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 """
-Chat Relater's Analyzer
-~~~~~~~~~~~~~~~~~~~~~~~
+chatrelater.analyzer
+~~~~~~~~~~~~~~~~~~~~
 
 Analyze (not necessarily) IRC logfiles and determine relations between
 chat users.

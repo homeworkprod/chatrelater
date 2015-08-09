@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Chat Relater's Visualizer
+chatrelater.visualization
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Visualize relations between chat partners.
