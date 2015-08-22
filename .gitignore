@@ -5,7 +5,10 @@ __pycache__
 # virtual environment
 venv
 
-# tox' local data
-.tox
+# packaging/distribution
+build/
+dist/
+*.egg-info/
 
-*.egg-info
+# testing
+.tox/
